@@ -9,6 +9,10 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'views/instructors.html',
         controller: 'InstructorPageController'
     })
+    .when('/instructors/:id', {
+        templateUrl: 'views/instructor_detail.html',
+        controller: 'InstructorDetailController'
+    })
     .otherwise({
         redirectTo: '/'
     });

@@ -11,3 +11,15 @@
 <p ng-click="welcomeMessage = 'YOLO'">I'm just a paragraph.</p>
 
 <button ng-click="getGoogle()">Get Google</button>
+<br>
+<input ng-model="name">
+<button ng-click="sayHelloToEveryone()">Say Hello</button>
+<br>
+<input ng-model="noteid">
+<div class="tweets">
+    <div class="tweet" ng-repeat="tweet in tweets">
+        {{text}}, {{user}}, {{createdAt}}
+    </div>
+</div>
+<button ng-click="getNote()">Get Note</button>
+<button ng-click="getAllTweets()">Get All Tweets</button>

@@ -1,5 +1,5 @@
 var controllers = angular.module('myApp.controllers', []);
-controllers.controller('HomePageController', ['$scope', '$http', function($scope, $http) {
+controllers.controller('HomePageController', ['$scope', '$http', 'WordFactory', 'WordService', 'NoteFactory', function($scope, $http, WordFactory, WordService, NoteFactory) {
     $scope.welcomeMessage = 'Hello World!';
     $scope.weather = "It's sunny and 85 degrees outside!";
     
@@ -17,6 +17,22 @@ controllers.controller('HomePageController', ['$scope', '$http', function($scope
         }, function(error) {
             console.error(error);
         });
+    }
+    
+    $scope.sayHelloToEveryone = function() {
+        WordFactory.sayHello();
+        WordService.sayHello($scope.name);
+    }
+    
+    $scope.getNote = function() {
+        var someNumber = $scope.noteid;
+        NoteFactory.get({id: someNumber});
+    }
+    
+    $scope.getAllTweets = function() {
+        NoteFactory.query().then(function(tweets) {
+            $scope.tweets = tweets;
+        }, console.error);
     }
     
     function logValue(val) {

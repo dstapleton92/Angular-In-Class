@@ -3,6 +3,7 @@ controllers.controller('HomePageController', ['$scope', '$http', 'WordFactory', 
     $scope.welcomeMessage = 'Hello World!';
     $scope.weather = "It's sunny and 85 degrees outside!";
     var myFriendsList = ['Tyler', 'Hillary', 'Haley', 'Matt', 'Emily', 'Claire', 'Morgan', 'Will', 'Tayo', 'Suzanne'];
+    var friendIndex = 0;
     console.log(myFriendsList);
     $scope.friends = [];
     
@@ -39,10 +40,15 @@ controllers.controller('HomePageController', ['$scope', '$http', 'WordFactory', 
     }
     
     $scope.addFriend = function() {
-        var friendToAdd = myFriendsList.shift();
-        $scope.friends.push(friendToAdd);
-        console.log('My Friend list is now:');
-        console.log(myFriendsList);
+        if (friendIndex < myFriendsList.length) {
+            var friendToAdd = myFriendsList[friendIndex];
+            $scope.friends.push(friendToAdd);
+            console.log('My Friend list is now:');
+            console.log(myFriendsList);
+            friendIndex++;
+        } else {
+            alert("That's all my friends!");
+        }
     }
     
     function logValue(val) {

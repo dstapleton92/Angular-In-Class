@@ -2,6 +2,9 @@ var controllers = angular.module('myApp.controllers', []);
 controllers.controller('HomePageController', ['$scope', '$http', 'WordFactory', 'WordService', 'NoteFactory', function($scope, $http, WordFactory, WordService, NoteFactory) {
     $scope.welcomeMessage = 'Hello World!';
     $scope.weather = "It's sunny and 85 degrees outside!";
+    var myFriendsList = ['Tyler', 'Hillary', 'Haley', 'Matt', 'Emily', 'Claire', 'Morgan', 'Will', 'Tayo', 'Suzanne'];
+    console.log(myFriendsList);
+    $scope.friends = [];
     
     $scope.pluckFirstLetter = function() {
         $scope.weather = $scope.weather.substring(1);
@@ -33,6 +36,13 @@ controllers.controller('HomePageController', ['$scope', '$http', 'WordFactory', 
         NoteFactory.query().then(function(tweets) {
             $scope.tweets = tweets;
         }, console.error);
+    }
+    
+    $scope.addFriend = function() {
+        var friendToAdd = myFriendsList.shift();
+        $scope.friends.push(friendToAdd);
+        console.log('My Friend list is now:');
+        console.log(myFriendsList);
     }
     
     function logValue(val) {

@@ -23,3 +23,9 @@
 </div>
 <button ng-click="getNote()">Get Note</button>
 <button ng-click="getAllTweets()">Get All Tweets</button>
+<br>
+<h1>My Friends</h1>
+<button ng-click="addFriend()">Add one of my Friends</button>
+<ul class="friends">
+    <li class="my-friend" ng-repeat="friend in friends">{{friend}}</li>
+</ul>
